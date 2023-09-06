@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+/* weg halen van onnodige margin en padding */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* google font text  */
+
+body{
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Dancing Script', sans-serif;
+    color: rgb(10, 10, 10);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 1,kaart in container geplaatst met een perspectief dat er voor zorgt dat het
+een nette 3D draai geeft 
+2, container een vaste width en height gegeven*/
+.container{
+    width: 350px;
+    height: 500px;
+    perspective: 500px;
+}
+
+/* 1,kaart in de container geplaatst.
+    2, omdat ik de container een vaste width en height heb gegeven kan ik kaart zelf een width en height geven van 100% en past het zich aan de width van 350px en height van 500px.
+    3. card class position relative gegeven
+    en in front en back class position absolute gegeven zodat de kaarten op elkaar liggen
+    4. transform style geeft het 3d animatie  */
+.card {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+}
+
+/* 1, de kaart in de container geef ik een hover effect.
+    2, met cursor pointer is de bedoeling dat als de muis op het object hangt er wat gebeurd
+    3, met transform geef ik het een rotate in de Y-as en dan draait het 180 graden */
+.container:hover > .card {
+    cursor: pointer;
+    transform: rotateY(180deg);
+}
+
+/* 1, front en back in de kaart class gezet
+    2,  de container een vaste width en height heb gegeven kan ik kaart zelf een width en height geven van 100% en past het zich aan de width van 350px en height van 500px
+    3, randjes gegeven aan de kaart van 2 rem
+    4, card class position relative gegeven
+    en in front en back class position absolute gegeven zodat de kaarten op elkaar liggen'
+    5, backface-visibility:hidden gegeven zodat het aparte kanten heeft en je de content niet 2x terug ziet
+    6, in flexbox geplaatst en in columns
+    7, content en items in het midden geplaatst
+    8,ruimte tussen de content gemaakt van 2 rem*/
+.front,
+.back {
+    height: 100%;
+    width: 100%;
+    border-radius: 2rem;
+    background: linear-gradient(45deg, red, yellow);
+    box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+}
+
+/* 1, img position relative gegeeven
+    2, top ruimte van 1em
+    3, width en height 10em
+    4, zwarte border gegeven van 5px
+    5, box shadow gegeven(might remove) */
+img {
+    position: relative;
+    width: 10em;
+    height: 10em;
+    border: 5px solid #121212 ;
+    border-radius: 5em;
+    
+}
+
+h1{
+    text-shadow: 2px 2px 5px white;
+}
+
+/* text decoration op h2 en h3 gegeven om topics te highlighten */
+h2, h3{
+    text-decoration: underline;
+}
+
+/* 1, kleur gegeven
+2,transformeer object in rotatie Y-as 180graden */
+.back{
+    background-color: green;
+    transform: rotateY(180deg);
+}
