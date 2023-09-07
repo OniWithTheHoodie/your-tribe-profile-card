@@ -9,6 +9,8 @@
 
 /* google font text  */
 
+/* 1, viewheight gegeven van 100
+2, */
 body{
     height: 100vh;
     overflow: hidden;
@@ -17,13 +19,15 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1.2em;
 }
+
 
 /* 1,kaart in container geplaatst met een perspectief dat er voor zorgt dat het
 een nette 3D draai geeft 
 2, container een vaste width en height gegeven*/
 .container{
-    width: 350px;
+    width: 400px;
     height: 500px;
     perspective: 500px;
 }
@@ -32,7 +36,7 @@ een nette 3D draai geeft
     2, omdat ik de container een vaste width en height heb gegeven kan ik kaart zelf een width en height geven van 100% en past het zich aan de width van 350px en height van 500px.
     3. card class position relative gegeven
     en in front en back class position absolute gegeven zodat de kaarten op elkaar liggen
-    4. transform style geeft het 3d animatie  */
+    4. transform style zorgt voor de 3animatie en dat het niet alleen de front flipt maar beiden kanten */
 .card {
     height: 100%;
     width: 100%;
@@ -46,7 +50,7 @@ een nette 3D draai geeft
     3, met transform geef ik het een rotate in de Y-as en dan draait het 180 graden */
 .container:hover > .card {
     cursor: pointer;
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) rotateZ(180deg);
 }
 
 /* 1, front en back in de kaart class gezet
@@ -58,12 +62,17 @@ een nette 3D draai geeft
     6, in flexbox geplaatst en in columns
     7, content en items in het midden geplaatst
     8,ruimte tussen de content gemaakt van 2 rem*/
+
+@keyframes example {
+    0%  {background-color: red;}
+    25% {background-color: yellow;}
+    50% {background-color: green;}
+}
 .front,
 .back {
     height: 100%;
     width: 100%;
     border-radius: 2rem;
-    background: linear-gradient(45deg, red, yellow);
     box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
     position: absolute;
     backface-visibility: hidden;
@@ -73,6 +82,9 @@ een nette 3D draai geeft
     align-items: center;
     text-align: center;
     gap: 2rem;
+    background-color: red;
+    animation: example 3s;
+    animation-iteration-count: infinite;
 }
 
 /* 1, img position relative gegeeven
@@ -101,6 +113,21 @@ h2, h3{
 /* 1, kleur gegeven
 2,transformeer object in rotatie Y-as 180graden */
 .back{
-    background-color: green;
-    transform: rotateY(180deg);
+    /* background-color: green; */
+    transform: rotateY(180deg) rotateZ(180deg);
 }
+
+@keyframes move{
+    from {top: -20px;}
+    to {top: 0px;}
+}
+
+#emojis{ 
+    position: relative;
+    animation: move 2s;
+    animation-delay: 3s;
+    /* animation-play-state: paused 20s; */
+    /* animation-play-state: running; */
+    animation-iteration-count: infinite;
+}
+
