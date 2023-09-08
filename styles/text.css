@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+/* google font link adres zorgt er voor dat ik daarmee connectie mee kan maken  */
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 
 /* weg halen van onnodige margin en padding */
 *{
@@ -10,26 +11,36 @@
 /* google font text  */
 
 /* 1, viewheight gegeven van 100
-2, */
+2, overflow hidden zodat het de content overneemt
+3, type text gegeven met font "Black Ops one"
+4, content in flex gezet
+5, content in het midden gezet
+6, items in het midden geplaatst
+7, text grote van 1.2em
+8, background-image oproepen met internet link michael jordan gif
+9, image was te klein dus image hele scherm laten */
 body{
     height: 100vh;
     overflow: hidden;
-    font-family: 'Dancing Script', sans-serif;
+    font-family: 'Black Ops One', cursive;
     color: rgb(10, 10, 10);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2em;
+    background-image: url(https://idlesocietycouk.files.wordpress.com/2020/05/bull.gif);
+    background-size: cover;
 }
 
 
-/* 1,kaart in container geplaatst met een perspectief dat er voor zorgt dat het
+/* 1, container een vaste width en height gegeven
+2,kaart in container geplaatst met een perspectief dat er voor zorgt dat het
 een nette 3D draai geeft 
-2, container een vaste width en height gegeven*/
+*/
 .container{
     width: 400px;
-    height: 500px;
-    perspective: 500px;
+    height: 650px;
+    perspective: 600px;
 }
 
 /* 1,kaart in de container geplaatst.
@@ -53,6 +64,14 @@ een nette 3D draai geeft
     transform: rotateY(180deg) rotateZ(180deg);
 }
 
+
+/* 1, begint van rood, naar yellow en dan groen */
+@keyframes example {
+    0%  {background-color: red;}
+    25% {background-color: yellow;}
+    50% {background-color: green;}
+}
+
 /* 1, front en back in de kaart class gezet
     2,  de container een vaste width en height heb gegeven kan ik kaart zelf een width en height geven van 100% en past het zich aan de width van 350px en height van 500px
     3, randjes gegeven aan de kaart van 2 rem
@@ -61,13 +80,10 @@ een nette 3D draai geeft
     5, backface-visibility:hidden gegeven zodat het aparte kanten heeft en je de content niet 2x terug ziet
     6, in flexbox geplaatst en in columns
     7, content en items in het midden geplaatst
-    8,ruimte tussen de content gemaakt van 2 rem*/
-
-@keyframes example {
-    0%  {background-color: red;}
-    25% {background-color: yellow;}
-    50% {background-color: green;}
-}
+    8,ruimte tussen de content gemaakt van 2 rem
+    9, background-color rood gegeven
+    10, animation keyframe oproepen met naam "example"
+    11, animation laten doorlopen*/
 .front,
 .back {
     height: 100%;
@@ -100,7 +116,7 @@ img {
     border-radius: 5em;
     
 }
-
+/* witte glow effect achter the text */
 h1{
     text-shadow: 2px 2px 5px white;
 }
@@ -117,11 +133,16 @@ h2, h3{
     transform: rotateY(180deg) rotateZ(180deg);
 }
 
+/* keyframe met naam move gaat van -20 boven naar beneden tot 0px */
 @keyframes move{
     from {top: -20px;}
     to {top: 0px;}
 }
 
+/* 1, position relative om object te manupuleren
+2, animation keyframe met naam "move" oproepen 
+3, animation een delay van 3sec geven
+4,animation door laten lopen */
 #emojis{ 
     position: relative;
     animation: move 2s;
@@ -131,3 +152,7 @@ h2, h3{
     animation-iteration-count: infinite;
 }
 
+.CapitalRed::first-letter {
+    color: #ff0000;
+    font-size: 200%;
+}
